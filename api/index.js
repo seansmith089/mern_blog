@@ -11,18 +11,27 @@ const app = express();
 app.use(express.json())
 
 
-
+// Connect to MongoDB and start server
 mongoose
   .connect("mongodb+srv://seansmith089:UJqQT8Jzoaf18L8s@mern-blog.tuxcsjt.mongodb.net/mern-blog?retryWrites=true&w=majority")
   .then(() => {
     console.log("MongoDB Connected!");
+    app.listen(3000, () => console.log("Server Running"));
   })
   .catch((error) => {
     console.log(error);
   });
 
-app.listen(3000, () => console.log("Server Running"));
 
 app.use("/api/user", userRoutes )
 app.use("/api/auth", authRoutes )
 
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500
+    const message = err.message || "internal server error"
+    res.status(statusCode).json({
+        success: false,
+        statusCode, 
+        message
+    })
+})
