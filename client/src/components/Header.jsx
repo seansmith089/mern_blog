@@ -30,15 +30,21 @@ function Header() {
       </Button>
 
       <div className="flex gap-2 md:order-2">
+        {/* Light/Dark Mode */}
         <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
           <FaMoon />
         </Button>
+
+        {/* Sign In Button */}
         <Link to="/signin">
-          <Button gradientDuoTone="purpleToBlue">Sign In</Button>
+          <Button gradientDuoTone="purpleToBlue" outline>Sign In</Button>
         </Link>
+
+        {/* Hamburger Menu */}
         <Navbar.Toggle></Navbar.Toggle>
       </div>
 
+        {/* Page Navigation */}
       <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={"div"}>
           <Link to="/">Home</Link>
