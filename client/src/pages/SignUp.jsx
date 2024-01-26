@@ -116,7 +116,7 @@ function SignUp() {
             </Link>
           </div>
           {errorMessage && (
-            <Alert class="mt-5" color="failure">
+            <Alert className="mt-5" color="failure">
               {errorMessage}
             </Alert>
           )}

@@ -53,7 +53,7 @@ function Header() {
             arrowIcon={false}
             inline
             label={
-              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+              <Avatar alt="user" src={currentUser.profilePicture} rounded />
             }
           >
             <Dropdown.Header>
@@ -75,7 +75,7 @@ function Header() {
             </Button>
           </Link>
         )}
-
+        
         {/* Hamburger Menu */}
         <Navbar.Toggle></Navbar.Toggle>
       </div>
