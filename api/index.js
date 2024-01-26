@@ -15,13 +15,13 @@ app.use(express.json())
 
 // Connect to MongoDB and start server
 mongoose
-  .connect("mongodb+srv://seansmith089:UJqQT8Jzoaf18L8s@mern-blog.tuxcsjt.mongodb.net/mern-blog?retryWrites=true&w=majority")
+  .connect(process.env.MONGODB)
   .then(() => {
     console.log("MongoDB Connected!");
-    app.listen(3000, () => console.log("Server Running"))
+    app.listen(3000, () => console.log("Server Running"));
   })
   .catch((error) => {
-    console.log(error)
+    console.log(error);
   });
 
 
