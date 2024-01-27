@@ -1,6 +1,6 @@
-import { errorHandler } from "../utils/error.js"
-import bcryptjs from "bcrypt"
-import User from "../models/user.model.js"
+import { errorHandler } from "../utils/error.js";
+import bcryptjs from "bcrypt";
+import User from "../models/user.model.js";
 
 export const updateUser = async (req, res, next) => {
   if (req.user.id !== req.params.userId) {
@@ -49,3 +49,17 @@ export const updateUser = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteUser = async (req, res, next) => {
+    if (req.user.id !== req.params.userId){
+        return next(errorHandler(403, 'You are not allowed to delete this account'))
+    }
+    try {
+        await User.findByIdAndDelete(req.params.userId)
+        res.status(200).json('user has been deleted')
+        
+    } catch (error) {
+        next(error)
+    }
+    
+}
